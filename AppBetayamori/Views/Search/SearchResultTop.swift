@@ -26,50 +26,50 @@ struct SearchResultTop: View {
             
                 SearchConditions()
             
-            PredictionWord()
-                .padding()
+//            PredictionWord()
+//                .padding()
 
-            HStack{
-                Spacer()
-                Text("表示方法")
-                Button(action: {withAnimation(.linear(duration: 0.1)) {searchViewChangeState = .gyarally}}){
-                    if searchViewChangeState == .gyarally {
-                        Text("ギャラリー")
-                            .foregroundColor(Color.white)
-                            .padding(.horizontal, 5)
-                            .background(Color.black)
-                            .cornerRadius(30)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 30)
-                                    .stroke(Color.black, lineWidth: 2)
-                            )
-                    } else {
-                        Text("ギャラリー")
-                            .foregroundColor(Color.black)
-                            .padding(.horizontal, 5)
-                    }
-                }
-                
-                Button(action: {withAnimation(.linear(duration: 0.1)) {searchViewChangeState = .list}}){
-                    if searchViewChangeState == .list {
-                        Text("リスト")
-                            .foregroundColor(Color.white)
-                            .padding(.horizontal, 5)
-                            .background(Color.black)
-                            .cornerRadius(30)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 30)
-                                    .stroke(Color.black, lineWidth: 2)
-                            )
-                    } else {
-                        Text("リスト")
-                            .foregroundColor(Color.black)
-                            .padding(.horizontal, 5)
-                    }
-                }
-            }
-            .font(.footnote)
-            .padding()
+//            HStack{
+//                Spacer()
+//                Text("表示方法")
+//                Button(action: {withAnimation(.linear(duration: 0.1)) {searchViewChangeState = .gyarally}}){
+//                    if searchViewChangeState == .gyarally {
+//                        Text("ギャラリー")
+//                            .foregroundColor(Color.white)
+//                            .padding(.horizontal, 5)
+//                            .background(Color.black)
+//                            .cornerRadius(30)
+//                            .overlay(
+//                                RoundedRectangle(cornerRadius: 30)
+//                                    .stroke(Color.black, lineWidth: 2)
+//                            )
+//                    } else {
+//                        Text("ギャラリー")
+//                            .foregroundColor(Color.black)
+//                            .padding(.horizontal, 5)
+//                    }
+//                }
+//
+//                Button(action: {withAnimation(.linear(duration: 0.1)) {searchViewChangeState = .list}}){
+//                    if searchViewChangeState == .list {
+//                        Text("リスト")
+//                            .foregroundColor(Color.white)
+//                            .padding(.horizontal, 5)
+//                            .background(Color.black)
+//                            .cornerRadius(30)
+//                            .overlay(
+//                                RoundedRectangle(cornerRadius: 30)
+//                                    .stroke(Color.black, lineWidth: 2)
+//                            )
+//                    } else {
+//                        Text("リスト")
+//                            .foregroundColor(Color.black)
+//                            .padding(.horizontal, 5)
+//                    }
+//                }
+//            }
+//            .font(.footnote)
+//            .padding()
             
             
             switch searchViewChangeState {

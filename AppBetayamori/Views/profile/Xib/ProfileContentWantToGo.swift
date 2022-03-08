@@ -19,7 +19,7 @@ struct ProfileContentWantToGo: View {
                 
                 LazyVGrid(columns: Array(repeating: GridItem(), count: 3)) {
                     ForEach(0..<eventDemoDataArray.count) {(row: Int) in
-                        NavigationLink(destination: EventPage()){
+                        NavigationLink(destination: EventPage(eventData: eventDemoDataArray[row])){
                             SearchEventItem(eventData: eventDemoDataArray[row])
                         }
                         .foregroundColor(Color.black)
@@ -28,7 +28,7 @@ struct ProfileContentWantToGo: View {
                     }
                     
                     ForEach(0..<eventDemoDataArray.count) {(row: Int) in
-                        NavigationLink(destination: EventPage()){
+                        NavigationLink(destination: EventPage(eventData: eventDemoDataArray[row])){
                             SearchEventItem(eventData: eventDemoDataArray[row])
                         }
                         .foregroundColor(Color.black)
@@ -37,7 +37,7 @@ struct ProfileContentWantToGo: View {
                     }
                     
                     ForEach(0..<eventDemoDataArray.count) {(row: Int) in
-                        NavigationLink(destination: EventPage()){
+                        NavigationLink(destination: EventPage(eventData: eventDemoDataArray[row])){
                             SearchEventItem(eventData: eventDemoDataArray[row])
                         }
                         .foregroundColor(Color.black)
@@ -46,7 +46,7 @@ struct ProfileContentWantToGo: View {
                     }
                     
                     ForEach(0..<eventDemoDataArray.count) {(row: Int) in
-                        NavigationLink(destination: EventPage()){
+                        NavigationLink(destination: EventPage(eventData: eventDemoDataArray[row])){
                             SearchEventItem(eventData: eventDemoDataArray[row])
                         }
                         .foregroundColor(Color.black)

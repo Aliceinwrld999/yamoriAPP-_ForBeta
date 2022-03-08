@@ -13,13 +13,28 @@ class DeviceSize: ObservableObject {
     @Published var height: CGFloat = 500
 }
 
+class SearchViewType: ObservableObject {
+    enum SearchType {
+        case gyarally, list
+    }
+    @Published  var viewType:SearchType = .gyarally
+}
+
+class EnvironmentData: ObservableObject {
+    @Published var isNavigationActive: Binding<Bool> = Binding<Bool>.constant(false)
+}
+
+
 
 struct ContentView: View {
     
     
     @EnvironmentObject var deviceSize: DeviceSize
     
-//    let sheetManager: PartialSheetManager = PartialSheetManager()
+    @State var isActive: Bool = false
+    @EnvironmentObject var envData: EnvironmentData
+    
+    
     
     init(){
         //List全体の背景色の設定
@@ -31,7 +46,7 @@ struct ContentView: View {
         
         GeometryReader{ geometry in
             ZStack(alignment: .bottom){
-                NavigationView{
+//                NavigationView{
                     
                     ZStack(alignment: .topTrailing){
                         TabView {
@@ -50,7 +65,7 @@ struct ContentView: View {
                                 UITableView.appearance().separatorColor = .clear
                             }
                     }
-                }
+//                }
             }.ignoresSafeArea()
             
                 .onAppear{

@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct SearchTopAll: View {
+    
+    var categoryTitle = ["My Picks", "おすすめ", "友達ランキング", "夏特集!!", "新着イベント", "東京の注目イベント", "渋谷のおすすめイベント"]
+    
+    
     var body: some View {
         ScrollView {
             
@@ -37,14 +41,14 @@ struct SearchTopAll: View {
 //                    trailing: 0))
                 
                 
-                ForEach(0..<3) {(row: Int) in
+                ForEach(1..<categoryTitle.count) {(row: Int) in
                     
                     
                     VStack(alignment: .leading) {
                         HStack {
-                            Text("おすすめのイベント")
+                            Text(categoryTitle[row - 1])
                             
-                            NavigationLink(destination: SearchResultTop()){
+                            NavigationLink(destination: SearchResultTop(searchWord: categoryTitle[row - 1])){
                                 Spacer()
                                 Image(systemName: "chevron.forward")
                                     .foregroundColor(.black)
@@ -64,15 +68,20 @@ struct SearchTopAll: View {
                             }
                         }
                     }
-                }
-                VStack{
-                    HStack{
-                        Text("マイタグPick🐈")
-                            .padding(.horizontal)
-                        Spacer()
+                    
+                    if row % 3 == 0 {
+                        VStack{
+                            HStack{
+                                Text("マイタグPick🐈")
+                                    .padding(.horizontal)
+                                Spacer()
+                            }
+                            TagBar()
+                        }
+                        .padding(.vertical)
                     }
-                    TagBar()
                 }
+                
             }
             
         }

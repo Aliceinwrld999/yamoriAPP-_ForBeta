@@ -21,41 +21,42 @@ struct SearchTop: View {
         NavigationView{
             ZStack{
                 VStack{
+                    if searchConditions.count > 0 {
+                        
+                        VStack(alignment: .leading){
+                            Text("検索条件")
+                                .font(.footnote)
+                                .padding(.top, 10)
+                                .padding(.leading,20)
+                            ScrollView(.horizontal, showsIndicators: false){
+                                HStack{
+                                    
+                                    ForEach(0..<self.searchConditions.count, id: \.self) { num in
+                                        VStack{
+                                            ZStack(alignment: .topTrailing){
+                                                SearchConditionItem(itemIcon: searchConditions[num].image,
+                                                                    itemText: searchConditions[num].text)
+                                                Button(action: {searchConditions.removeFirst()}){
+                                                    Image(systemName: "multiply.circle")
+                                                        .foregroundColor(Color.black)
+                                                        .offset(x: -10, y: 10)
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            
+                            Divider()
+                        }
+                    }
                     
                     if TextFieldState {
                         
                         SearchEditingView(searchConditions: $searchConditions)
                     } else {
                         VStack{
-                            if searchConditions.count > 0 {
-                                
-                                VStack(alignment: .leading){
-                                    Text("検索条件")
-                                        .font(.footnote)
-                                        .padding(.top, 10)
-                                        .padding(.leading,20)
-                                    ScrollView(.horizontal, showsIndicators: false){
-                                        HStack{
-                                            
-                                            ForEach(0..<self.searchConditions.count, id: \.self) { num in
-                                                VStack{
-                                                    ZStack(alignment: .topTrailing){
-                                                        SearchActionItem(SearchAcrionItemIcon: searchConditions[num].image,
-                                                                         SearchAcrionItemtext: searchConditions[num].text,
-                                                                         searchConditions: $searchConditions)
-                                                        Button(action: {searchConditions.removeFirst()}){
-                                                            Image(systemName: "multiply.circle")
-                                                                .foregroundColor(Color.black)
-                                                        }
-                                                    }
-                                                }.padding(.horizontal)
-                                            }
-                                        }
-                                    }
-                                    
-                                    Divider()
-                                }
-                            }
+                            
                             if searchConditions.count == 0 {
                                 SearchTopAll()
                             } else {
@@ -94,7 +95,7 @@ struct SearchTop: View {
                             .frame(width: 300)
                         
                         if TextFieldState {
-                            NavigationLink(destination: SearchResultTop()){
+                            Button(action: {TextFieldState = false}){
                                 Text("検索")
                             }
                         }
@@ -102,10 +103,11 @@ struct SearchTop: View {
                 }
             }
             
+            
         }
         .addPartialSheet()
-        .navigationBarTitle("")
-        .navigationBarHidden(true)
+        //        .navigationBarTitle("")
+        //        .navigationBarHidden(true)
     }
 }
 

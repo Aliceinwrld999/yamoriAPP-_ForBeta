@@ -16,7 +16,7 @@ struct SearchListItem: View {
         
         
         VStack{
-            NavigationLink(destination: EventPage()){
+            NavigationLink(destination: EventPage(eventData: eventDemoDataArray[0])){
                 HStack{
                     Image(eventData.image)
                         .resizable()

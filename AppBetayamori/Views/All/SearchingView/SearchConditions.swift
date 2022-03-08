@@ -26,9 +26,8 @@ struct SearchConditions: View {
                         ForEach(0..<self.searchConditions.count, id: \.self) { num in
                             VStack{
                                 ZStack(alignment: .topTrailing){
-                                    SearchActionItem(SearchAcrionItemIcon: searchConditions[num].image,
-                                                     SearchAcrionItemtext: searchConditions[num].text,
-                                                     searchConditions: $searchConditions)
+                                    SearchConditionItem(itemIcon: searchConditions[num].image,
+                                                     itemText: searchConditions[num].text)
                                     Button(action: {searchConditions.removeFirst()}){
                                         Image(systemName: "multiply.circle")
                                             .foregroundColor(Color.black)

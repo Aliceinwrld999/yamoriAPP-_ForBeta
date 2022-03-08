@@ -19,14 +19,12 @@ struct activityButton: View {
             Image(systemName: "square.and.arrow.up")
                 .resizable()
                 .scaledToFill()
-                .frame(width: 20, height: 20)
+                .frame(width: 25, height: 25)
                 .foregroundColor(.black)
-                .padding(EdgeInsets(
-                    top: 0, leading: 20, bottom: 0, trailing: 0))
             
         }.sheet(isPresented: self.$showActivityView) {
             ActivityView(
-                activityItems: ["abc"],
+                activityItems: ["https://yamorifilm.com"],
                 applicationActivities: nil
             )
         }

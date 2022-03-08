@@ -11,12 +11,7 @@ import PartialSheet
 struct EventPage: View {
     
     
-    enum searchViewChange {
-        case gyarally, list
-    }
-    
-    @State var searchViewChangeState: searchViewChange = .gyarally
-    
+    var eventData: SampleDataModel
     
     var followerNum = 123
     @State private var fullscreenImageModalIsShow = false
@@ -24,14 +19,20 @@ struct EventPage: View {
     @State private var favorite: Bool = false
     @State var eventImage = "NogizakaFourSeasons"
     
+    
+    
     @EnvironmentObject var partialSheetManager: PartialSheetManager
+    
+    @EnvironmentObject var searchType: SearchViewType
+    
+    
     
     var body: some View {
         ScrollView{
             VStack{
                 HStack{
                     Button(action: {self.fullscreenImageModalIsShow.toggle()}){
-                        Image(eventImage)
+                        Image(eventData.image)
                             .resizable()
                             .scaledToFill()
                             .frame(width: 100, height: 153)
@@ -43,46 +44,10 @@ struct EventPage: View {
                     Spacer()
                     
                     VStack{
-                        Button(action: {
-//                            self.partialSheetManager.showPartialSheet(content: {
-//                                LetsGoList()
-//                                    .frame(height: 300)
-//                            })
-                        }){
-                            HStack(alignment: .center){
-                                VStack{
-                                    Image("WantToGoIcon")
-                                        .resizable()
-                                        .scaledToFill()
-                                        .frame(width: 25, height: 25)
-                                    
-                                    Text("行きたい")
-                                        .font(.caption2)
-                                        .padding(.trailing, 20)
-                                        .foregroundColor(Color.black)
-                                }
-                                ForEach(0..<3) {(row: Int) in
-                                    UserCircleIcon()
-                                        .frame(width: 45, height: 45)
-                                        .padding(.leading, -13)
-                                }
-                                Spacer()
-                            }
-                        }
-                        //                        HStack{
-                        //                            VStack{
-                        //                                Text("123")
-                        //                                    .font(.title)
-                        //                                Text("フォロワー")
-                        //                                    .font(.caption)
-                        //                            }
-                        //                            VStack{
-                        //                                Text("15 K")
-                        //                                    .font(.title)
-                        //                                Text("views")
-                        //                                    .font(.caption)
-                        //                            }
-                        //                        }
+                        
+                        Text(eventData.title)
+                            .lineLimit(2)
+                        
                         HStack{
                             HStack(spacing: 20){
                                 VStack{
@@ -100,10 +65,10 @@ struct EventPage: View {
                                 }
                                 VStack{
                                     Button(action: {
-//                                        self.partialSheetManager.showPartialSheet(content: {
-//                                            
-//                                            CommentHalfModal()
-//                                        })
+                                        self.partialSheetManager.showPartialSheet(content: {
+                                            
+                                            CommentHalfModal()
+                                        })
                                     }){
                                         Image(systemName: "text.bubble")
                                             .resizable()
@@ -115,7 +80,7 @@ struct EventPage: View {
                                     Text("25K")
                                         .font(.caption)
                                 }
-//                               
+//
                                 VStack{
                                     Button(action: { }){
                                         Image("WantToGoIcon")
@@ -127,7 +92,10 @@ struct EventPage: View {
                                     Text("25K")
                                         .font(.caption)
                                 }
+                                VStack{
                                 activityButton()
+                                    Text("")
+                                }
                             }
 //                            EventFollowButton()
                             
@@ -146,33 +114,33 @@ struct EventPage: View {
                 }
                 .padding()
                 
+                Button(action: {
+                    self.partialSheetManager.showPartialSheet(content: {
+                        LetsGoList()
+                            .frame(height: 300)
+                    })
+                }){
+                    HStack(alignment: .center){
+                        VStack{
+                            Image("WantToGoIcon")
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 25, height: 25)
+                            
+                            Text("行きたい")
+                                .font(.caption2)
+                                .padding(.trailing, 20)
+                                .foregroundColor(Color.black)
+                        }
+                        ForEach(0..<3) {(row: Int) in
+                            UserCircleIcon()
+                                .frame(width: 45, height: 45)
+                                .padding(.leading, -13)
+                        }
+                        Spacer()
+                    }
+                }
                 
-                
-                //                HStack{
-                //                    Button(action: {self.ScheduleModalIsShow.toggle()}){
-                //                        Text("予定に追加")
-                //                            .font(.footnote)
-                //                            .fontWeight(.semibold)
-                //                            .foregroundColor(Color.black)
-                //                            .padding(EdgeInsets(
-                //                                top: 5,
-                //                                leading: 30,
-                //                                bottom:5,
-                //                                trailing: 30
-                //                            ))
-                //                            .overlay(
-                //                                RoundedRectangle(cornerRadius: 3)
-                //                                    .stroke(Color.black, lineWidth: 1)
-                //                            )
-                //
-                //                    }.sheet(isPresented: $ScheduleModalIsShow) {
-                //                        CreateSchedule()
-                //                    }
-                //
-                //                    Spacer()
-                //
-                //
-                //                }
             }
             .padding(EdgeInsets(
                 top: 0,
@@ -180,13 +148,56 @@ struct EventPage: View {
                 bottom: 0,
                 trailing: 30))
             
-            Divider()
-            EventPageDescription()
+//            Divider()
+            
+            
+            
+            EventPageContent()
                 .onTapGesture(count: 2){
                     favorite = true
                 }
-            
-                    switch searchViewChangeState {
+//            HStack{
+//                Spacer()
+//                Text("表示方法")
+//                Button(action: {withAnimation(.linear(duration: 0.1)) {searchType.viewType = .gyarally}}){
+//                    if searchType.viewType == .gyarally {
+//                        Text("ギャラリー")
+//                            .foregroundColor(Color.white)
+//                            .padding(.horizontal, 5)
+//                            .background(Color.black)
+//                            .cornerRadius(30)
+//                            .overlay(
+//                                RoundedRectangle(cornerRadius: 30)
+//                                    .stroke(Color.black, lineWidth: 2)
+//                            )
+//                    } else {
+//                        Text("ギャラリー")
+//                            .foregroundColor(Color.black)
+//                            .padding(.horizontal, 5)
+//                    }
+//                }
+//
+//                Button(action: {withAnimation(.linear(duration: 0.1)) {searchType.viewType = .list}}){
+//                    if searchType.viewType == .list {
+//                        Text("リスト")
+//                            .foregroundColor(Color.white)
+//                            .padding(.horizontal, 5)
+//                            .background(Color.black)
+//                            .cornerRadius(30)
+//                            .overlay(
+//                                RoundedRectangle(cornerRadius: 30)
+//                                    .stroke(Color.black, lineWidth: 2)
+//                            )
+//                    } else {
+//                        Text("リスト")
+//                            .foregroundColor(Color.black)
+//                            .padding(.horizontal, 5)
+//                    }
+//                }
+//            }
+//            .font(.footnote)
+//            .padding()
+            switch searchType.viewType {
                     case .gyarally:
                         SearchBeforeTopGyarally()
                     case .list:
@@ -200,7 +211,7 @@ struct EventPage: View {
         }
         
         
-        .navigationTitle("イベントタイトルイベントタイトルイベントタイトル")
+        .navigationTitle("")
         .navigationBarTitleDisplayMode(.inline)
         
         .toolbar {
@@ -227,7 +238,7 @@ struct EventPage: View {
 
 struct EventPage_Previews: PreviewProvider {
     static var previews: some View {
-        EventPage()
+        EventPage(eventData: eventDemoDataArray[0])
             .previewDevice("iPhone 12 Pro")
     }
 }

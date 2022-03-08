@@ -19,9 +19,10 @@ struct SearchEventItem: View {
     
     var eventData: SampleDataModel
     
+    
     var body: some View {
         VStack {
-            NavigationLink(destination: EventPage()){
+            NavigationLink(destination: EventPage(eventData: eventDemoDataArray[1])){
                 VStack{
                     Image(eventData.image)
                         .resizable()
@@ -64,9 +65,9 @@ struct SearchEventItem: View {
                     ))
             }
             
-            
+
             if self.wantToGoUserList.count == 0 {
-                
+
             }
             else if self.wantToGoUserList.count <= 3 {
                 Button(action: {
@@ -76,7 +77,7 @@ struct SearchEventItem: View {
                     })
                 }){
                     HStack {
-                        
+
                         Image("WantToGoIcon")
                             .resizable()
                             .scaledToFill()
@@ -86,11 +87,11 @@ struct SearchEventItem: View {
                                 .frame(width: 30, height: 30)
                                 .padding(.trailing, -15)
                         }
-                        
+
                         Spacer()
                     }
                 }
-                
+
             }
             else if self.wantToGoUserList.count > 3 {
                 Button(action: {
@@ -100,7 +101,7 @@ struct SearchEventItem: View {
                     })
                 }){
                     HStack {
-                        
+
                         Image("WantToGoIcon")
                             .resizable()
                             .scaledToFill()
@@ -109,14 +110,13 @@ struct SearchEventItem: View {
                             UserCircleIcon(imageUrl: wantToGoUserList[num])
                                 .frame(width: 30, height: 30)
                         }
-                        
+
                         Spacer()
                     }
                 }
             }
         }
         .frame(width: 105)
-                .addPartialSheet()
     }
 }
 

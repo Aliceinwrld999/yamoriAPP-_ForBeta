@@ -16,7 +16,9 @@ struct AppBetayamoriApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                 .environmentObject(DeviceSize())
                  .environmentObject(sheetManager)
+                 .environmentObject(SearchViewType())
                 
         }
     }

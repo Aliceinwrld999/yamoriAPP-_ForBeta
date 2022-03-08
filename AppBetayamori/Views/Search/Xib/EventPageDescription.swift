@@ -11,6 +11,8 @@ struct EventPageDescription: View {
     
     var geocode = GeocodeMap()
     
+    @Binding var contentHeight: CGFloat
+    
     let eventDescription = "イベントの説明。この場所にイベントの詳細な説明テキストが入ります。"
     let eventUrl = "https://www.yamorifilm.com"
     let eventLocation = "東京都渋谷区渋谷2-21-1"
@@ -20,7 +22,7 @@ struct EventPageDescription: View {
     
     var body: some View {
         
-        ScrollView{
+        VStack{
             Text(eventDescription)
             
             Divider()
@@ -114,12 +116,20 @@ struct EventPageDescription: View {
         Divider()
     }
         .padding()
+        .background(GeometryReader{
+            geometry -> Text in
+            contentHeight = geometry.size.height
+            return Text("")
+        })
     
 }
 }
 
 struct EventPageDescription_Previews: PreviewProvider {
+    
+    @State static var contentHeight: CGFloat = 500
+    
     static var previews: some View {
-        EventPageDescription()
+        EventPageDescription(contentHeight: $contentHeight)
     }
 }
