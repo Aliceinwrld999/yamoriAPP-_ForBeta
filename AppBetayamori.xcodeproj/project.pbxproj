@@ -79,6 +79,9 @@
 		FB34F03427D7363F00859668 /* EventPageContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB34F03327D7363F00859668 /* EventPageContent.swift */; };
 		FB34F03627D7365200859668 /* EventPageMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB34F03527D7365200859668 /* EventPageMedia.swift */; };
 		FB34F03A27D7468500859668 /* SearchConditionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB34F03927D7468500859668 /* SearchConditionItem.swift */; };
+		FB34F05D27DB38BA00859668 /* YouTubeiOSPlayerHelper in Frameworks */ = {isa = PBXBuildFile; productRef = FB34F05C27DB38BA00859668 /* YouTubeiOSPlayerHelper */; };
+		FB34F05F27DB38D100859668 /* YoutubeWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB34F05E27DB38D100859668 /* YoutubeWrapper.swift */; };
+		FB34F06127DB3A9900859668 /* VideoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB34F06027DB3A9900859668 /* VideoList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -154,6 +157,8 @@
 		FB34F03327D7363F00859668 /* EventPageContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventPageContent.swift; sourceTree = "<group>"; };
 		FB34F03527D7365200859668 /* EventPageMedia.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventPageMedia.swift; sourceTree = "<group>"; };
 		FB34F03927D7468500859668 /* SearchConditionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchConditionItem.swift; sourceTree = "<group>"; };
+		FB34F05E27DB38D100859668 /* YoutubeWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeWrapper.swift; sourceTree = "<group>"; };
+		FB34F06027DB3A9900859668 /* VideoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +167,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB34F02C27D242EC00859668 /* PartialSheet in Frameworks */,
+				FB34F05D27DB38BA00859668 /* YouTubeiOSPlayerHelper in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -229,6 +235,7 @@
 				FB34EF9A27D20E7600859668 /* ImagePicker.swift */,
 				FB34EF9C27D20E7600859668 /* KeyboardObserver.swift */,
 				FB34EF9D27D20E7600859668 /* SizeReader.swift */,
+				FB34F05E27DB38D100859668 /* YoutubeWrapper.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -350,6 +357,7 @@
 				FB34F03327D7363F00859668 /* EventPageContent.swift */,
 				FB34EFE327D20F2600859668 /* EventPageDescription.swift */,
 				FB34F03527D7365200859668 /* EventPageMedia.swift */,
+				FB34F06027DB3A9900859668 /* VideoList.swift */,
 				FB34EFE127D20F2600859668 /* PredictionWord.swift */,
 				FB34EFE427D20F2600859668 /* SearchCategoryBar.swift */,
 				FB34EFE527D20F2600859668 /* SearchEventItem.swift */,
@@ -416,6 +424,7 @@
 			name = AppBetayamori;
 			packageProductDependencies = (
 				FB34F02B27D242EC00859668 /* PartialSheet */,
+				FB34F05C27DB38BA00859668 /* YouTubeiOSPlayerHelper */,
 			);
 			productName = AppBetayamori;
 			productReference = FB34EF7C27D20D1600859668 /* AppBetayamori.app */;
@@ -447,6 +456,7 @@
 			mainGroup = FB34EF7327D20D1600859668;
 			packageReferences = (
 				FB34F02A27D242EC00859668 /* XCRemoteSwiftPackageReference "PartialSheet" */,
+				FB34F05B27DB38BA00859668 /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */,
 			);
 			productRefGroup = FB34EF7D27D20D1600859668 /* Products */;
 			projectDirPath = "";
@@ -486,6 +496,7 @@
 				FB34EFA227D20E7600859668 /* FlowLockedView.swift in Sources */,
 				FB34EFAF27D20E8600859668 /* UserData.swift in Sources */,
 				FB34F00727D20F6100859668 /* TagLocked.swift in Sources */,
+				FB34F06127DB3A9900859668 /* VideoList.swift in Sources */,
 				FB34F01527D20F6B00859668 /* CommentHalfModal.swift in Sources */,
 				FB34EF8227D20D1600859668 /* ContentView.swift in Sources */,
 				FB34EFA627D20E7600859668 /* KeyboardObserver.swift in Sources */,
@@ -521,6 +532,7 @@
 				FB34EFCD27D20EC700859668 /* UserFollowList.swift in Sources */,
 				FB34EF8027D20D1600859668 /* AppBetayamoriApp.swift in Sources */,
 				FB34EFF727D20F3100859668 /* SearchTop.swift in Sources */,
+				FB34F05F27DB38D100859668 /* YoutubeWrapper.swift in Sources */,
 				FB34EFA327D20E7600859668 /* FlowDeleteView.swift in Sources */,
 				FB34EFE627D20F2600859668 /* SearchListItem.swift in Sources */,
 				FB34F00C27D20F6100859668 /* TagBar.swift in Sources */,
@@ -681,6 +693,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -710,6 +723,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -755,6 +769,14 @@
 				version = 2.1.14;
 			};
 		};
+		FB34F05B27DB38BA00859668 /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/youtube/youtube-ios-player-helper.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -762,6 +784,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = FB34F02A27D242EC00859668 /* XCRemoteSwiftPackageReference "PartialSheet" */;
 			productName = PartialSheet;
+		};
+		FB34F05C27DB38BA00859668 /* YouTubeiOSPlayerHelper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FB34F05B27DB38BA00859668 /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */;
+			productName = YouTubeiOSPlayerHelper;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
